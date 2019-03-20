@@ -1,4 +1,4 @@
 # Neuroscientists Talk Shop RSS Feed
-There are some broken links in the official NTS RSS feed, so I'm maintaining my own.
+Mirror of [official NTS](https://snrp.utsa.edu/Podcast/Podcast.html) RSS feed, fixing some broken links.
 
 [RSS Feed](feed.xml)
