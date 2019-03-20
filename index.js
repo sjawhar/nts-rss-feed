@@ -43,7 +43,7 @@ const writeFeed = (feed, file) => {
 const main = async () => {
   const feed = await getFeed('http://snrp.utsa.edu/Podcast/rss.xml')
   transformFeed(feed);
-  writeFeed(feed, 'rss.xml');
+  writeFeed(feed, 'feed.xml');
 };
 
 main().catch(error => console.error(error));
