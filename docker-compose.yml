@@ -2,8 +2,9 @@ version: '3.5'
 
 services:
   generator:
-    image: node:10
+    image: node:10-alpine
     volumes:
       - ./:/app
     working_dir: /app
-    command: [node, .]
+    user: node
+    command: sh -c 'npm install && node .'
