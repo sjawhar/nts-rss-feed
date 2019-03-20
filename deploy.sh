@@ -2,6 +2,6 @@
 set -e
 
 docker-compose run --rm generator
-git add rss.xml
-git commit -m "Update rss.xml"
+git add feed.xml
+git commit -m "Update feed.xml"
 git push
