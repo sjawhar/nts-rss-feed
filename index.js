@@ -58,7 +58,9 @@ const checkFeed = async feed => {
         return { guid, title, url };
       }
     })
-  )).filter(broken => !!broken);
+  ))
+    .filter(broken => !!broken)
+    .sort((a, b) => a.guid.localeCompare(b.guid));
 
   if (brokenLinks.length) {
     console.log(JSON.stringify(brokenLinks, null, 2));
