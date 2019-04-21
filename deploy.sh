@@ -2,6 +2,11 @@
 set -e
 
 docker-compose run --rm generator
-git add feed.xml fixed-links.json
-git commit -m "Update feed.xml"
-git push
+
+read -p "Commit and push? " commit
+
+if [ "${commit}" = "y" ]; then
+  git add -p
+  git commit -m "Update feed.xml"
+  git push
+fi

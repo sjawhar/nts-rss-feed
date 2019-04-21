@@ -77,4 +77,7 @@ const main = async () => {
 
 main()
   .then(() => console.log("Feed updated"))
-  .catch(error => console.error(error));
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
