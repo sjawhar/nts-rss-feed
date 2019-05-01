@@ -18,15 +18,13 @@ const getFeed = async url => {
   });
 };
 
-const decodeItem = ({
-  enclosure: [
-    {
-      $: { url }
-    }
-  ],
-  guid: [{ _: guid }],
-  title: [title]
-}) => ({ url, guid, title });
+const decodeItem = item => {
+  const { url } =
+    (item.enclosure && item.enclosure[0] && item.enclosure[0].$) || {};
+  const { _: guid } = (item.guid && item.guid[0]) || {};
+  const [title] = item.title || [];
+  return { url, guid, title };
+};
 
 const transformFeed = feed => {
   feed.rss.channel[0].item.forEach(item => {
@@ -35,7 +33,10 @@ const transformFeed = feed => {
     if (!url) {
       return;
     }
-    Object.assign(item.enclosure[0].$, { url });
+    if (!item.enclosure) {
+      Object.assign(item, { enclosure: [{ $: {} }] });
+    }
+    Object.assign(item.enclosure[0].$, typeof url === "string" ? { url } : url);
   });
 };
 
